@@ -1,11 +1,11 @@
 ;
-; AutoHotkey Version: 1.x
+; AutoHotkey Version: Newest
 ; Language:       English
 ; Platform:       Win9x/NT
-; Author:         A.N.Other <myemail@nowhere.com>
-;
+; Author:         Kevin@glazenburg.com
+; 
 ; Script Function:
-;	Template script (you can customize this template by editing "ShellNew\Template.ahk" in your Windows folder)
+; An project that makes it easier to install programs after an clean computer install.
 ;
 
 #NoEnv  ; Recommended for performance and compatibility with future AutoHotkey releases.
@@ -17,6 +17,7 @@ SetWorkingDir %A_ScriptDir%  ; Ensures a consistent starting directory.
 #include httpQuery.ahk
 
 downloadfile("ftp://ftp.snt.utwente.nl/pub/software/openoffice/stable/3.1.1/OOo_3.1.1_Win32Intel_install_wJRE_en-US.exe","OpenOffice.exe")
+
 
 
 write_bin(byref bin,filename,size){
