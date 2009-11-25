@@ -26,7 +26,7 @@ Return
 
 showSize:
    percentageDone := Round(HttpQueryCurrentSize / HttpQueryFullSize * 100)
-   progress, %done1%,If the download stalls then just wait`,it does still continue.,%percentagedone%`% done,Downloading %filename2%
+   progress, %percentageDone%,If the download stalls then just wait`,it does still continue.,%percentagedone%`% done,Downloading %filename2%
    winmove,Downloading %filename2%,,0,0
 return
 }
