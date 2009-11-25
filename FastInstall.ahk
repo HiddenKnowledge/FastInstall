@@ -4,7 +4,7 @@ SetWorkingDir %A_ScriptDir%  ; Ensures a consistent starting directory.
 
 #include httpQuery.ahk
 
-DownloadFile( "ftp://ftp.snt.utwente.nl/pub/software/openoffice/stable/3.1.1/OOo_3.1.1_Win32Intel_install_wJRE_en-US.exe", "OpenOffice.exe" )
+DownloadFile("ftp://ftp.snt.utwente.nl/pub/software/openoffice/stable/3.1.1/OOo_3.1.1_Win32Intel_install_wJRE_en-US.exe", "OpenOffice.exe")
 
 write_bin( byref bin, filename, size ) {
 	global result
