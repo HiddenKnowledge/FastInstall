@@ -8,7 +8,7 @@ SetWorkingDir %A_ScriptDir%  ; Ensures a consistent starting directory.
 ; the received binary data to a file.
 
 download1("http://ftp.opera.com/pub/opera/win/1010b1/int/Opera_int_b1_Setup.msi","Opera_int_b1_Setup.msi")
-download1("http://ftp.snt.utwente.nl/pub/software/openoffice/stable/3.1.1/OOo_3.1.1_Win32Intel_install_wJRE_en-US.exe","OpenOffice.exe")
+download1("http://ftp.snt.utwente.nl/pub/software/openoffice/stable/3.1.1/OOo_3.1.1_Win32Intel_install_wJRE_en-US.exe","OOo_3.1.1_Win32Intel_install_wJRE_en-US.exe") ;Somehow this download never finishes.
 download1(URL,Filename2)
 {
 global
@@ -25,7 +25,7 @@ else
 Return
 
 showSize:
-   percentageDone := HttpQueryCurrentSize / HttpQueryFullSize * 100
+   percentageDone := HttpQueryCurrentSize / HttpQueryFullSize * 100 -1
    StringSplit,done,percentagedone,.
    progress, %done1%,,%done1%`% done,Downloading %filename2%
    winmove,Downloading %filename2%,,0,0
