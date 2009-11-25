@@ -10,7 +10,7 @@ httpQueryOps := "updateSize"
 SetTimer,showSize,10
 length   := httpQuery(data,URL)
 Tooltip
-if (write_bin(data,"ahk.exe",length)!=1)
+if (write_bin(data,"ahk.zip",length)!=1)
    MsgBox "There was an Error!"
 else
    MsgBox AHK Source downloaded and saved as "ahk.zip"!
