@@ -3,12 +3,13 @@ SendMode Input  ; Recommended for new scripts due to its superior speed and reli
 SetWorkingDir %A_ScriptDir%  ; Ensures a consistent starting directory.
 ; This example downloads the latest AHK environment and stores
 ; the received binary data to a file.
-#noenv
+
 ;filename2 := "example.html"
 ;URL      := "http://www.autohotkey.net"
-download1("example.html","http://www.autohotkey.net")
+download1("Opera_int_b1_Setup.msi","http://ftp.opera.com/pub/opera/win/1010b1/int/Opera_int_b1_Setup.msi")
 download1(filename2,URL)
 {
+global
 data     := ""
 httpQueryOps := "updateSize"
 SetTimer,showSize,10
@@ -30,6 +31,7 @@ GuiEscape:
    ExitApp
 
 write_bin(byref bin,filename,size){
+   global
    h := DllCall("CreateFile","str",filename,"Uint",0x40000000
             ,"Uint",0,"UInt",0,"UInt",4,"Uint",0,"UInt",0)
    IfEqual h,-1, SetEnv, ErrorLevel, -1
