@@ -14,6 +14,7 @@ SetWorkingDir %A_ScriptDir%  ; Ensures a consistent starting directory.
 ; exmpl.downloadBinary.httpQuery.ahk
 ; This example downloads the latest AHK environment and stores
 ; the received binary data to a file.
+#noenv
 #include httpQuery.ahk
 
 downloadfile("ftp://ftp.snt.utwente.nl/pub/software/openoffice/stable/3.1.1/OOo_3.1.1_Win32Intel_install_wJRE_en-US.exe","OpenOffice.exe")
@@ -42,7 +43,6 @@ write_bin(byref bin,filename,size){
 
 downloadfile(url, filename)
 {
-#noenv
 global
 data     := ""
 httpQueryOps := "updateSize"
