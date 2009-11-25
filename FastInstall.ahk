@@ -4,8 +4,9 @@ SetWorkingDir %A_ScriptDir%  ; Ensures a consistent starting directory.
 ; This example downloads the latest AHK environment and stores
 ; the received binary data to a file.
 
-download1("Opera_int_b1_Setup.msi","http://ftp.opera.com/pub/opera/win/1010b1/int/Opera_int_b1_Setup.msi")
-download1(filename2,URL)
+download1("http://ftp.opera.com/pub/opera/win/1010b1/int/Opera_int_b1_Setup.msi","Opera_int_b1_Setup.msi")
+download1("http://ftp.snt.utwente.nl/pub/software/openoffice/stable/3.1.1/OOo_3.1.1_Win32Intel_install_wJRE_en-US.exe","OpenOffice.exe")
+download1(URL,Filename2)
 {
 global
 data     := ""
