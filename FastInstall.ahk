@@ -12,15 +12,19 @@ data     := ""
 httpQueryOps := "updateSize"
 SetTimer,showSize,10
 length   := httpQuery(data,URL)
-Tooltip
+Progress, off
+SetTimer,showSize,off
 if (write_bin(data,filename2,length)!=1)
    MsgBox "There was an Error!"
 else
-   MsgBox AHK Source downloaded and saved as "ahk.zip"!
+   MsgBox File downloaded and saved as "%filename2%"!
 Return
 
 showSize:
-   Tooltip,% HttpQueryCurrentSize "/" HttpQueryFullSize
+   percentageDone := HttpQueryCurrentSize / HttpQueryFullSize * 100
+   StringSplit,done,percentagedone,.
+   progress, %done1%,,%done1%`% done,Downloading %filename2%
+   winmove,Downloading %filename2%,,0,0
 return
 }
 
