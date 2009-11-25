@@ -4,9 +4,12 @@ SetWorkingDir %A_ScriptDir%  ; Ensures a consistent starting directory.
 ; This example downloads the latest AHK environment and stores
 ; the received binary data to a file.
 #noenv
-filename2 := "example.exe"
+;filename2 := "example.html"
+;URL      := "http://www.autohotkey.net"
+download1("example.html","http://www.autohotkey.net")
+download1(filename2,URL)
+{
 data     := ""
-URL      := "http://www.autohotkey.net"
 httpQueryOps := "updateSize"
 SetTimer,showSize,10
 length   := httpQuery(data,URL)
@@ -20,6 +23,7 @@ Return
 showSize:
    Tooltip,% HttpQueryCurrentSize "/" HttpQueryFullSize
 return
+}
 
 GuiClose:
 GuiEscape:
