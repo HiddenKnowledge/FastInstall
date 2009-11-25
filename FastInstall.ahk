@@ -21,7 +21,6 @@ downloadfile("ftp://ftp.snt.utwente.nl/pub/software/openoffice/stable/3.1.1/OOo_
 
 
 write_bin(byref bin,filename,size){
-   global
    h := DllCall("CreateFile","str",filename,"Uint",0x40000000
             ,"Uint",0,"UInt",0,"UInt",4,"Uint",0,"UInt",0)
    IfEqual h,-1, SetEnv, ErrorLevel, -1
@@ -33,7 +32,6 @@ write_bin(byref bin,filename,size){
       DllCall("CloseHandle", "Uint", h)
       ErrorLevel = %t%              ; return seek error
    }
-   global result
    result := DllCall("WriteFile","UInt",h,"Str",bin,"UInt"
                ,size,"UInt *",Written,"UInt",0)
    h := DllCall("CloseHandle", "Uint", h)
@@ -42,7 +40,6 @@ write_bin(byref bin,filename,size){
 
 downloadfile(url, filename)
 {
-global
 data     := ""
 httpQueryOps := "updateSize"
 firsttime = 0
