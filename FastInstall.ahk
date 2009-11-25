@@ -25,9 +25,9 @@ else
 Return
 
 showSize:
-   percentageDone := HttpQueryCurrentSize / HttpQueryFullSize * 100 -1
+   percentageDone := HttpQueryCurrentSize / HttpQueryFullSize * 100 -0.000001
    StringSplit,done,percentagedone,.
-   progress, %done1%,If the download stalls then just wait`,it does still continue.,%done1%`% done,Downloading %filename2%
+   progress, %done1%,If the download stalls then just wait`,it does still continue.,%percentagedone%`% done,Downloading %filename2%
    winmove,Downloading %filename2%,,0,0
 return
 }
