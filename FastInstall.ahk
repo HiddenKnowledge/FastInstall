@@ -1,14 +1,13 @@
 #SingleInstance force
-#MaxMem 256
-#NoTrayIcon
+;#NoTrayIcon
 #NoEnv  ; Recommended for performance and compatibility with future AutoHotkey releases.
 SendMode Input  ; Recommended for new scripts due to its superior speed and reliability.
 SetWorkingDir %A_ScriptDir%  ; Ensures a consistent starting directory.
 ; This example downloads the latest AHK environment and stores
 ; the received binary data to a file.
-
-download1("http://ftp.opera.com/pub/opera/win/1010b1/int/Opera_int_b1_Setup.msi","Opera_int_b1_Setup.msi")
+;download1("http://ftp.opera.com/pub/opera/win/1010b1/int/Opera_int_b1_Setup.msi","Opera_int_b1_Setup.msi")
 download1("http://ftp.snt.utwente.nl/pub/software/openoffice/stable/3.1.1/OOo_3.1.1_Win32Intel_install_wJRE_en-US.exe","OOo_3.1.1_Win32Intel_install_wJRE_en-US.exe") ;Somehow this download never finishes.
+
 download1(URL,Filename2)
 {
 global
@@ -24,10 +23,24 @@ else
    MsgBox File downloaded and saved as "%filename2%"!
 Return
 
+;msgshow:
+;tooltip,% HttpQueryCurrentSize "/" HttpQueryFullSize
+;return
+
 showSize:
+   
+   if (%HttpQueryFullSize% > 100000000)
+   {
    percentageDone := Round(HttpQueryCurrentSize / HttpQueryFullSize * 100)
    progress, %percentageDone%,If the download stalls then just wait`,it does still continue.,%percentagedone%`% done,Downloading %filename2%
    winmove,Downloading %filename2%,,0,0
+   }
+   else ;If the file is "too big" Exit the App.
+   {
+   sleep, 1000
+   msgbox, Fatal error: File is too big to download. Maximum: 100000000B This file: %HttpQueryFullSize%B
+   exitapp
+   }
 return
 }
 
