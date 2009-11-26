@@ -221,9 +221,16 @@ httpQuery(byref Result, lpszUrl, POSTDATA="", HEADERS="")
       if (instr(HTTPQueryOps,"updateSize"))
          Global HttpQueryCurrentSize := fsize
    }
-   sizeArray := SubStr(sizeArray,1,-1)   ; trim last PipeChar
-   
-   VarSetCapacity(result,fSize+1,0)      ; reconstruct the result from above generated chunkblocks
+   ;
+sizeArray := SubStr(sizeArray,1,-1)
+
+;should pop up a tooltip with your memory size, if allocation succeeds it will go away very quickly.
+
+tmp_memsize := fsize + 1 / (1024*1024)
+    tooltip Memory requested %tmp_memsize%Mb in size
+varSetCapacity(result, fSize+1,0)
+tooltip
+   ;
    Dest := &result                       ; to a our ByRef result variable
    Loop,Parse,SizeArray,|
       DllCall("RtlMoveMemory","uInt",Dest,"uInt",&buffer%A_Index%,"uInt",A_LoopField)
